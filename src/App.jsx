@@ -3,16 +3,16 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import { Amplify } from 'aws-amplify'
-// import outputs from "../amplify_outputs.json"
+import outputs from "./aws-exports.js"
 import { generateClient } from 'aws-amplify/api'
 import "@aws-amplify/ui-react/styles.css"
 import { useAuthenticator } from '@aws-amplify/ui-react'
 
-// Amplify.configure(outputs);
+Amplify.configure(outputs);
 
-// const client = generateClient({
-//   authMode: "userPool",
-// });
+const client = generateClient({
+  authMode: "userPool",
+});
 
 function App() {
   const [userProfiles, setUserProfiles] = useState([]);
