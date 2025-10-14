@@ -6,6 +6,7 @@ import { Amplify } from 'aws-amplify'
 import outputs from "./aws-exports.js"
 import { generateClient } from 'aws-amplify/api'
 import "@aws-amplify/ui-react/styles.css"
+import { context } from 'esbuild'
 
 Amplify.configure(outputs);
 
@@ -15,13 +16,9 @@ const client = generateClient({
 
 function App() {
   const [userProfiles, setUserProfiles] = useState([]);
-  // const { signOut }= useAuthenticator((context) => [context.user]);
+  const { user, signOut }= useAuthenticator((context) => [context.user]);
 
   const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    
-  }, [])
 
   return (
     <>
@@ -41,7 +38,8 @@ function App() {
         <p>
           Edit <code>src/App.jsx</code> and save to test HMR
         </p>
-        {userProfiles.forEach}
+         <h2>Welcome, {user.username}!</h2>
+         <button onClick={signOut}>Sign out</button>
       </div>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
