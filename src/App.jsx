@@ -6,7 +6,6 @@ import { Amplify } from 'aws-amplify'
 import outputs from "./aws-exports.js"
 import { generateClient } from 'aws-amplify/api'
 import "@aws-amplify/ui-react/styles.css"
-import { useAuthenticator } from '@aws-amplify/ui-react'
 
 Amplify.configure(outputs);
 
