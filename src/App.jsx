@@ -6,7 +6,7 @@ import { Amplify } from 'aws-amplify'
 import outputs from "./aws-exports.js"
 import { generateClient } from 'aws-amplify/api'
 import "@aws-amplify/ui-react/styles.css"
-import { context } from 'esbuild'
+import { useAuthenticator } from '@aws-amplify/ui-react'
 
 Amplify.configure(outputs);
 
@@ -15,7 +15,6 @@ const client = generateClient({
 });
 
 function App() {
-  const [userProfiles, setUserProfiles] = useState([]);
   const { user, signOut }= useAuthenticator((context) => [context.user]);
 
   const [count, setCount] = useState(0);
